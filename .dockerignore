@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+node_modules/
+.streamlit/
+.git/
+.dockerignore
+Dockerfile
+docker-compose.yml
