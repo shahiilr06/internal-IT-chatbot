@@ -10,10 +10,9 @@ from app import app
 client = TestClient(app)
 
 def test_read_root():
-    # FastAPI automatically generates a 404 for root since we didn't define it
-    # but we can check if the server is responsive
+    # Root route should be healthy
     response = client.get("/")
-    assert response.status_code == 404
+    assert response.status_code == 200
 
 def test_chat_endpoint_no_data():
     # Testing the chat endpoint without valid payload
