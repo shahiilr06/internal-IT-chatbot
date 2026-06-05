@@ -87,25 +87,20 @@ def initialize_rag():
         }
     )
 
-    # 3. Define the Prompt (Chain of Thought / Structured Reasoning)
+    # 3. Define the Prompt (Strict ChatML Format for SmolLM2)
     template = """<|im_start|>system
-You are a Nexira IT Support Professional. Your goal is to provide accurate technical support using ONLY the provided Context.
+You are a highly accurate Nexira IT Support Professional. Your sole purpose is to answer the user's query based EXCLUSIVELY on the provided Context. 
 
-INTERNAL REASONING PROCESS (Do not output these headings, just follow them):
-1. ANALYSIS: Identify which company (Google, Nexira, Aura, or Vanguard) the user is asking about.
-2. EXTRACTION: Find the specific technical steps or policies in the Context related to the request.
-3. VERIFICATION: Ensure the steps are explicitly mentioned in the text.
-4. FORMATTING: Structure the final answer using Markdown.
-
-MANDATORY RULES:
-- Start with a direct, professional summary of the answer.
-- Use ### Headers for topics and bullet points for technical steps.
-- Use **bold text** for tools, commands, or company names.
-- If the Context is missing information, say: "I apologize, but our documented IT records for [Company Name] do not contain those specific instructions."
-
-Context:
-{context}<|im_end|>
+CRITICAL RULES:
+- DO NOT invent, hallucinate, or guess any information.
+- DO NOT provide historical background, URLs, or external knowledge that is not explicitly in the text.
+- If the Context does not contain the answer, you MUST reply exactly: "I apologize, but our internal documentation does not contain information regarding that request."
+- Be concise and use Markdown headers (###) and bullet points.<|im_end|>
 <|im_start|>user
+Context Information:
+{context}
+
+User Query:
 {query}<|im_end|>
 <|im_start|>assistant
 """
@@ -129,6 +124,10 @@ Context:
     )
     
     return chain
+
+@app.get("/")
+def read_root():
+    return {"status": "healthy", "message": "Nexira IT Assistant API is running. Use /chat to interact with the RAG system."}
 
 @app.on_event("startup")
 def on_startup():
