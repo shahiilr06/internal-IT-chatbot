@@ -20,7 +20,7 @@ app.add_middleware(
 MODEL_NAME = "HuggingFaceTB/SmolLM2-1.7B-Instruct"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 VECTORSTORE_DIR = "vectorstore"
-
+#lazy initialization of the RAG chain to avoid long startup times if vectorstore is missing
 rag_chain = None
 
 def initialize_rag():

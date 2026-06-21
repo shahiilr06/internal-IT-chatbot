@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3ea78368655e5220",
+        "id": "6d68bf5fce359701",
         "type": "tabs",
         "children": [
           {
-            "id": "bad5e1761436a14b",
+            "id": "fcaa3ef84919a5ae",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "60 Data Ingestion.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "60 Data Ingestion"
+              "title": "New tab"
             }
           }
         ]
@@ -183,14 +179,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "bad5e1761436a14b",
+  "active": "fcaa3ef84919a5ae",
   "lastOpenFiles": [
+    "00 Index.md",
     "70 CI-CD Pipeline.md",
     "50 Setup & Deployment.md",
-    "40 Frontend Architecture.md",
     "30 Backend Architecture.md",
-    "20 Technical Stack.md",
     "10 Project Overview.md",
-    "00 Index.md"
+    "20 Technical Stack.md",
+    "60 Data Ingestion.md",
+    "40 Frontend Architecture.md"
   ]
 }

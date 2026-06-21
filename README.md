@@ -87,9 +87,9 @@ node server.js    # Start Node server
 ├── .github/workflows/     # ⚙️ CI/CD Pipeline configuration
 ├── app.py                 # 🧠 FastAPI Backend & RAG Chain
 ├── ingest.py              # 📥 Data Ingestion Script
-├── docker-compose.yml     # 🚢 Multi-container orchestration
-├── backend.Dockerfile     # 🐍 Python container config
-└── frontend.Dockerfile    # 📦 Node container config
+├── start.sh               # 🏃 Bash script to launch API and UI
+├── docker-compose.yml     # 🚢 Orchestration config
+└── Dockerfile             # 📦 Unified container config
 ```
 
 ---
@@ -98,7 +98,11 @@ node server.js    # Start Node server
 The project includes a robust **GitHub Actions** workflow that:
 1. Runs Python unit tests with `pytest`.
 2. Validates Node.js environment.
-3. Verifies Docker builds for both services.
+3. Verifies the unified Docker build.
+
+### Container Publishing
+On pushes to `main`/`master`, the workflow publishes the Docker image to **GHCR** at:
+`ghcr.io/shahiilr06/internal-it-chatbot` (tags: `latest` and commit SHA).
 
 To run tests locally:
 ```bash

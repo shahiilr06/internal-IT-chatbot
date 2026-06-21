@@ -33,3 +33,8 @@ sequenceDiagram
 
 ---
 [[00 Index|🏠 Back to Home]]
+[[70 CI-CD Pipeline]]
+[[60 Data Ingestion]]
+[[40 Frontend Architecture]]
+[[10 Project Overview]]
+

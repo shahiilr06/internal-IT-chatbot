@@ -6,7 +6,9 @@ tags: [setup, docker, deployment]
 # 50 Setup & Deployment
 
 ## 🐳 Docker (Production)
-```bash
+```
+docker compose up --build
+```
 docker-compose up --build
 ```
 

@@ -16,19 +16,19 @@ This project includes a professional **GitHub Actions** CI/CD pipeline defined i
 ### What the Pipeline Does:
 1.  **Backend CI:** Sets up Python 3.11, installs dependencies, and runs automated tests using `pytest`.
 2.  **Frontend CI:** Sets up Node.js 20, installs dependencies, and validates the frontend build.
-3.  **Docker Build Check:** Ensures that both `backend.Dockerfile` and `frontend.Dockerfile` can build successfully.
+3.  **Docker Build Check:** Ensures that the unified `Dockerfile` can build successfully.
 
 ---
 
 ## MASTER GUIDE: How to Run the Project
 
 ### Option 1: The Docker Way (Recommended)
-This is the fastest way to run the entire app with one command.
+This is the fastest way to run the entire app with one command. It uses a single container that runs both the Python API and Node.js UI.
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
-*   **Backend:** http://localhost:8000
-*   **Frontend:** http://localhost:3000
+*   **Frontend Chat UI:** http://localhost:3000
+*   **Backend API:** http://localhost:8000
 
 ### Option 2: The Developer Way (Local Run)
 
@@ -37,17 +37,11 @@ docker-compose up --build
 python ingest.py
 ```
 
-**2. Start Backend:**
+**2. Start Both Services via Script:**
 ```bash
-python app.py
+./start.sh
 ```
-
-**3. Start Frontend:**
-```bash
-cd frontend
-npm install
-node server.js
-```
+*(This starts both the backend and frontend simultaneously in your local environment)*
 
 ### Option 3: Automated Testing
 To run the automated test suite locally:
@@ -59,8 +53,10 @@ pytest tests/
 - `app.py`: FastAPI Backend (API)
 - `ingest.py`: Data Ingestion & FAISS Creation
 - `frontend/`: Node.js Frontend (ChatGPT UI)
+- `start.sh`: Bash script to execute both frontend and backend
 - `.github/workflows/`: CI/CD Pipeline Configuration
 - `tests/`: Automated Python Test Suite
 - `rag/`: Source PDFs
 - `vectorstore/`: Persistent Vector Database
 - `docker-compose.yml`: Master orchestration file
+- `Dockerfile`: Unified container configuration
